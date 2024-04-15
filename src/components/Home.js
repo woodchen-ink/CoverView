@@ -13,8 +13,6 @@ import step2 from '../assets/images/step2.png'
 
 import hashnodeLogo from '../assets/images/hashnode-logo.png'
 import devLogo from '../assets/images/dev-logo.png'
-
-import WallOfLove from './walloflove';
 const Home = () => {
 
 
