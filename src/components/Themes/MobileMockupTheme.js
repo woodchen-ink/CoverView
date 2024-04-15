@@ -47,7 +47,7 @@ const MobileMockupTheme = ({ config }) => {
                                 className="text-sm  flex flex-col cursor-pointer mb-2 bg-white rounded border"
                                 onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}
                             />
-                            <span className=" text-center italic">click to upload a screenshot</span>
+                            <span className=" text-center italic">点击上传截图</span>
                         </div>
 
                     }

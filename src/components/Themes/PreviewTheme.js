@@ -42,7 +42,7 @@ const PreviewTheme = ({ config }) => {
                                 className="text-xl cursor-pointer mb-2 bg-white rounded border"
                                 onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}
                             />
-                            <span className=" text-center italic">click to upload a screenshot</span>
+                            <span className=" text-center italic">点击上传截图</span>
                         </div>
 
                     }

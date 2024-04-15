@@ -21,20 +21,20 @@ import theme7 from '../assets/images/theme7.webp'
 const defaultIcon = { 'label': 'react', 'value': 'react' }
 
 const defaultSettings = {
-	title: "A begineers guide to frontend development",
+	title: "前端开发初学者指南",
 	bgColor: "#949ee5",
 	pattern: "",
 	download: "PNG",
-	author: 'Rutik Wankhade',
+	author: '鲁蒂克·万卡德',
 	icon: defaultIcon,
 	devIconOptions: [defaultIcon],
 	font: 'font-Anek',
-	theme: 'background',
+	theme: '背景',
 	customIcon: '',
-  platform: 'hashnode'
+	platform: 'Hashnode'
 };
 
-const devIconsUrl = "https://raw.githubusercontent.com/devicons/devicon/master/devicon.json"
+const devIconsUrl = "https://mirror.czl.net/https://raw.githubusercontent.com/devicons/devicon/master/devicon.json"
 // const devIconOptions = [
 // 	{ value: 'None', label: 'None' },
 // 	{ value: 'javascript', label: 'Javascript' },
@@ -151,12 +151,12 @@ class Editor extends React.Component {
 														value={this.state.font}
 														onChange={(e) => this.setState({ font: e.target.value })}
 														className="focus:outline-none text-gray-700 text-xl p-2 rounded border">
-														<option>font-serif</option>
-														<option>font-sans</option>
-														<option>font-mono</option>
-														<option>font-Inter</option>
-														<option>font-Poppins</option>
-														<option>font-Anek</option>
+														<option>衬线体</option>
+														<option>无衬线体</option>
+														<option>等宽字体</option>
+														<option>Inter</option>
+														<option>Poppins</option>
+														<option>Anek</option>
 													</select>
 												</div>
 												<div className="flex flex-col m-2 w-1/2">
@@ -176,36 +176,36 @@ class Editor extends React.Component {
 
 											<div className="flex items-center">
 												{/* <div className="flex flex-col m-2 w-1/2">
-													<span className="font-medium pb-1">Pattern</span>
+													<span className="font-medium pb-1">图案</span>
 													<select
 														onChange={(e) => this.setState({ pattern: e.target.value })}
 														className="focus:outline-none border text-xl p-2 rounded"
 														value={this.state.pattern}>
 
-														<option>none</option>
-														<option>graph-paper</option>
-														<option>jigsaw</option>
-														<option>hideout</option>
-														<option>dots</option>
-														<option>falling-triangles</option>
-														<option>circuit-board</option>
-														<option>temple</option>
-														<option>anchors</option>
-														<option>brickwall</option>
-														<option>overlapping-circles</option>
-														<option>wiggle</option>
-														<option>tic-tac-toe</option>
-														<option>leaf</option>
-														<option>bubbles</option>
-														<option>squares</option>
-														<option>explorer</option>
-														<option>jupiter</option>
-														<option>sun</option>
+														<option>无</option>
+														<option>方格图案</option>
+														<option>拼图</option>
+														<option>隐藏图案</option>
+														<option>点状图案</option>
+														<option>下落三角形</option>
+														<option>电路板图案</option>
+														<option>寺庙图案</option>
+														<option>锚形图案</option>
+														<option>砖墙图案</option>
+														<option>重叠圆圈</option>
+														<option>摇摆图案</option>
+														<option>井字棋图案</option>
+														<option>叶子图案</option>
+														<option>泡泡图案</option>
+														<option>方格图案</option>
+														<option>探险家图案</option>
+														<option>木星图案</option>
+														<option>太阳图案</option>
 													</select>
 												</div> */}
 
 												<div className="flex flex-col m-2 w-full">
-													<span className="font-medium pb-1">Platform</span>
+													<span className="font-medium pb-1">平台</span>
 
 													<select
 														onChange={(e) => this.setState({ platform: e.target.value })}
@@ -221,7 +221,7 @@ class Editor extends React.Component {
 											<button
 												className="flex items-center bg-gray-700 text-white rounded-lg mt-6 text-lg font-semibold p-1 px-4 mx-auto border"
 												onClick={this.handleReset}>
-												<span>Reset All</span>
+												<span>全部重置</span>
 											</button>
 
 										</Tab.Panel>

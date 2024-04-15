@@ -24,7 +24,7 @@ const BackgroundTheme = ({ config }) => {
 
             })
             .then(response => {
-                // console.log(response.response.results);
+                console.log(response.response.results);
                 setImageList(response.response.results)
             });
     }
@@ -39,7 +39,7 @@ const BackgroundTheme = ({ config }) => {
 
             })
             .then(response => {
-                // console.log(response.response.results);
+                console.log(response.response.results);
                 setImageList(response.response.results)
             });
     }, [])
@@ -49,7 +49,7 @@ const BackgroundTheme = ({ config }) => {
             url: image.urls.regular,
             name: image.user.name,
             avatar: image.user.profile_image.small,
-            profile: `${image.user.links.html}?utm_source=https://coverview.vercel.app&utm_medium=referral`,
+            profile: `${image.user.links.html}?utm_source=https://coverview.czl.net&utm_medium=referral`,
             downloadLink: image.links.download_location
 
         })
@@ -123,7 +123,7 @@ const BackgroundTheme = ({ config }) => {
                                             <span className="pr-2">{unsplashImage.name}</span>
                                         </a>
 
-                                        <a href="https://unsplash.com/?utm_source=https://coverview.vercel.app&utm_medium=referral" className="text-sm text-white mx-2">Unsplash</a>
+                                        <a href="https://unsplash.com/?utm_source=https://coverview.czl.net&utm_medium=referral" className="text-sm text-white mx-2">Unsplash</a>
                                     </div>
 
                                 </div>
