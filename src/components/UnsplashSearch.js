@@ -32,7 +32,7 @@ const UnsplashSearch = ({ largeImgPreview }) => {
             url: image.urls.regular,
             name: image.user.name,
             avatar: image.user.profile_image.small,
-            profile: `${image.user.links.html}?utm_source=https://coverview.vercel.app&utm_medium=referral`,
+            profile: `${image.user.links.html}?utm_source=https://coverview.czl.net&utm_medium=referral`,
             downloadLink: image.links.download_location
 
         })
