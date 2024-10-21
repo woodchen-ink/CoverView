@@ -6,6 +6,7 @@ const UnsplashSearch = ({ largeImgPreview }) => {
 
     const [imageList, setImageList] = useState([]);
     const [searchText, setSearchText] = useState('setup');
+    // eslint-disable-next-line no-unused-vars
     const { unsplashImage, setUnsplashImage } = useContext(ImgContext);
 
 
