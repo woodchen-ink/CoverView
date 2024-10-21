@@ -1,78 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
-import unsplash from "../../utils/unsplashConfig";
+import React, { useContext } from 'react';
 import { ImgContext } from '../../utils/ImgContext';
+import UnsplashSearch from '../UnsplashSearch';
 
 const StylishTheme = ({ config }) => {
-    const { title, author, font, icon, customIcon, platform,bgColor } = config;
-
-    // const [image, setImage] = useState({})
-
-    const [imageList, setImageList] = useState([]);
-    const [searchText, setSearchText] = useState('dev');
-
+    const { title, author, font, icon, customIcon, bgColor } = config;
     const { unsplashImage, setUnsplashImage } = useContext(ImgContext);
-
-    const searchImages = () => {
-
-        unsplash.search
-            .getPhotos({
-                query: searchText,
-                page: 1,
-                per_page: 30,
-                // orientation:'portrait'
-
-
-            })
-            .then(response => {
-                // console.log(response.response.results);
-                setImageList(response.response.results)
-            });
-    }
-
-    useEffect(() => {
-
-        unsplash.search
-            .getPhotos({
-                query: 'setup',
-                page: 1,
-                per_page: 25
-
-            })
-            .then(response => {
-                // console.log(response.response.results);
-                setImageList(response.response.results)
-            });
-    }, [])
-
-    const selectImage = (image) => {
-        setUnsplashImage({
-            url: image.urls.regular,
-            name: image.user.name,
-            avatar: image.user.profile_image.small,
-            profile: `${image.user.links.html}?utm_source=https://coverview.czl.net&utm_medium=referral`,
-            downloadLink: image.links.download_location
-
-        })
-
-
-    }
-
-    const handleSearchSubmit = (e) => {
-        e.preventDefault();
-        searchImages(searchText);
-
-    }
 
 
     return (
-        <div className=" bg-white rounded">
+        <div className=" bg-white w-full h-full">
 
 
-            <div className={` overflow-y-hidden flex flex-col rounded ${platform}`}
-            style={{ backgroundColor: bgColor }}
+            <div className={` overflow-y-hidden flex flex-col`}
+                style={{ backgroundColor: bgColor }}
             >
 
-                <div className="flex flex-row  items-center bg-white  justify-center m-4 ">
+                <div className="flex flex-row  items-center bg-white  justify-center">
 
                     <div className="h-full w-1/2  bg-white rounded-l-xl">
                         <div className={`${font} px-12 justify-center text-left rounded-xl h-full p-4 flex flex-col`}>
@@ -94,18 +37,15 @@ const StylishTheme = ({ config }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-1/2 h-full">
 
 
                         {unsplashImage ?
-                            <div className='relative flex group'>
+                            <div className='relative w-full h-max flex group'>
 
-                                <div className="h-96 w-96 ">
-                                    
-                              
-                                    <img src={unsplashImage.url && unsplashImage.url} className=" object-cover h-96 w-96  " alt="preview" />
- </div>
-                               
+                                <img src={unsplashImage.url && unsplashImage.url} className=" object-cover w-full h-full  " alt="preview" />
+
+
                                 <button
                                     onClick={() => setUnsplashImage('')}
                                     className="absolute  top-4 right-2 cursor-pointer">
@@ -128,35 +68,9 @@ const StylishTheme = ({ config }) => {
                                 </div>
                             </div>
                             :
-                            <div className="flex flex-col p-2  bg-white items-center justify-center">
+                            <div className="flex h-max w-full flex-col bg-white items-center justify-center">
 
-                                <form onSubmit={(e) => handleSearchSubmit(e)} className="flex bg-gray-50 rounded-full border mb-2">
-                                    <input type="text"
-                                        value={searchText}
-                                        placeholder="Search image"
-                                        className="focus:outline-none w-max text-lg bg-gray-50  p-1 px-4  rounded-full border border-gray-50"
-                                        onChange={(e) => setSearchText(e.target.value)}
-                                    />
-
-                                    <button type="submit" onClick={() => searchImages(searchText)}>
-                                        <svg className="w-9 h-9 p-2 bg-gray-700 hover:bg-gray-800 text-white rounded-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                    </button>
-                                </form>
-
-
-                                <div className="overflow-y-scroll overflow-x-hidden h-80">
-                                    {
-                                        imageList.map(image => {
-                                            return <img src={image.urls.regular}
-                                                key={image.id}
-                                                alt={image.alt_description}
-                                                className="rounded m-2 cursor-pointer"
-                                                onClick={() => selectImage(image)
-                                                }
-                                            />
-                                        })
-                                    }
-                                </div>
+                                <UnsplashSearch />
                             </div>
 
                         }
