@@ -1,53 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ImgContext } from '../../utils/ImgContext';
+import UnsplashSearch from '../UnsplashSearch';
 
 const PreviewTheme = ({ config }) => {
     const { bgColor, title, font } = config;
-
-    const [image, setImage] = useState()
+    const { unsplashImage, setUnsplashImage } = useContext(ImgContext);
+    const [image, setImage] = useState();
 
     return (
         <div className="w-full h-full bg-white">
-
-
-            <div className={`overflow-y-hidden flex flex-col px-4 pt-4 w-full h-full`}
+            <div className={`overflow-y-hidden flex flex-col w-full h-full`}
                 style={{ backgroundColor: bgColor }}
             >
+                <div className="w-full h-full">
+                    {unsplashImage ?
+                        <div className='relative flex group h-full'>
+                            <div className="h-full w-full">
+                                <img src={unsplashImage.url && unsplashImage.url} className="object-cover h-full w-full" alt="preview" />
+                            </div>
 
-                <h1 className={`${font} text-2xl md:text-3xl p-10 text-white font-bold text-center`}>{title}</h1>
+                            <div className="h-full bg-gray-800/60 absolute top-0 right-0 left-0 flex flex-col items-center justify-center px-4">
+                                <button
+                                    onClick={() => setUnsplashImage('')}
+                                    className="absolute top-2 right-2 cursor-pointer">
+                                    <svg className="group-hover:inline-block hidden w-8 h-8 text-gray-800 bg-white p-2 rounded-full z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
 
-                <div className="w-10/12 group mx-auto mt-auto mb-0 shadow-lg  flex flex-col bg-white rounded-t-xl border-white">
-                    <div className="bg-gray-800 h-8 w-full p-2 flex items-center rounded-t-xl">
-                        <div className="bg-red-400 h-3 w-3 rounded-full mx-1"></div>
-                        <div className="bg-yellow-400 h-3 w-3 rounded-full mx-1"></div>
-                        <div className="bg-green-400 h-3 w-3 rounded-full mx-1"></div>
-                        <button
-                            onClick={() => setImage('')}
-                            className="ml-auto mr-4 cursor-pointer">
-                            <svg className="group-hover:inline-block hidden w-4 h-4 text-white rounded-full z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                <h1 className={`${font} text-2xl md:text-3xl p-10 text-white font-bold text-center`}>{title}</h1>
 
-                        </button>
-                    </div>
+                                <div className="w-10/12 group shadow-lg flex flex-col bg-white rounded-xl border-white">
+                                    <div className="bg-gray-800 h-8 w-full p-2 flex items-center rounded-t-xl">
+                                        <div className="bg-red-400 h-3 w-3 rounded-full mx-1"></div>
+                                        <div className="bg-yellow-400 h-3 w-3 rounded-full mx-1"></div>
+                                        <div className="bg-green-400 h-3 w-3 rounded-full mx-1"></div>
+                                        <button
+                                            onClick={() => setImage('')}
+                                            className="ml-auto mr-4 cursor-pointer">
+                                            <svg className="group-hover:inline-block hidden w-4 h-4 text-white rounded-full z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                        </button>
+                                    </div>
 
+                                    {image ?
+                                        <div className="h-full">
+                                            <img src={image && image} className="object-cover rounded-b-xl h-full w-full" alt="preview" />
+                                        </div>
+                                        :
+                                        <div className="flex flex-col p-20 py-28 bg-white rounded-b-xl items-center justify-center">
+                                            <input type="file"
+                                                className="text-xl cursor-pointer mb-2 bg-white rounded border"
+                                                onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}
+                                            />
+                                            <span className="text-center italic">点击上传截图</span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
 
-                    {image ?
-                        <div className="">
-                            <img src={image && image} className="object-cover " alt="preview" />
-
+                            <div className="absolute bottom-4 right-4 opacity-80">
+                                <div className="group-hover:flex hidden items-center">
+                                    <span className="text-sm text-white mx-2">Photo by</span>
+                                    <a href={unsplashImage.profile} target="_blank" rel="noreferrer" className="cursor-pointer flex items-center bg-gray-300 rounded-full text-sm">
+                                        <img src={unsplashImage.avatar && unsplashImage.avatar} alt={unsplashImage.name} className="h-6 w-6 rounded-full mr-2" />
+                                        <span className="pr-2">{unsplashImage.name}</span>
+                                    </a>
+                                    <a href="https://unsplash.com/?utm_source=https://coverview.czl.net&utm_medium=referral" className="text-sm text-white mx-2">Unsplash</a>
+                                </div>
+                            </div>
                         </div>
                         :
-                        <div className="flex flex-col p-20 py-28 bg-white items-center justify-center">
-                            <input type="file"
-                                className="text-xl cursor-pointer mb-2 bg-white rounded border"
-                                onChange={(e) => setImage(URL.createObjectURL(e.target.files[0]))}
-                            />
-                            <span className=" text-center italic">点击上传截图</span>
+                        <div className="flex flex-col p-2 bg-white items-center justify-center h-full">
+                            <UnsplashSearch largeImgPreview />
                         </div>
-
                     }
                 </div>
-
             </div>
-
         </div>
     );
 }

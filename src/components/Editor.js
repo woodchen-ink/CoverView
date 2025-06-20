@@ -25,7 +25,7 @@ const defaultSettings = {
 	platform: 'hashnode'
 };
 
-const devIconsUrl = "https://mirror.20200511.xyz/https://raw.githubusercontent.com/devicons/devicon/master/devicon.json"
+const devIconsUrl = "https://raw.githubusercontent.com/devicons/devicon/master/devicon.json"
 
 class Editor extends React.Component {
 
