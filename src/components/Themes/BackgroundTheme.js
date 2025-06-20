@@ -23,7 +23,7 @@ const BackgroundTheme = ({ config }) => {
                             <div className='relative flex group'>
 
                                 <div className="h-max w-full ">
-                                    <img src={unsplashImage.url && unsplashImage.url} className=" object-cover h-full w-full  " alt="preview" />
+                                    <img src={unsplashImage.url && unsplashImage.url} className=" object-cover h-full w-full  " alt="preview" crossOrigin="anonymous" />
                                 </div>
 
 

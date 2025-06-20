@@ -16,7 +16,7 @@ const MobileMockupTheme = ({ config }) => {
                     {unsplashImage ?
                         <div className='relative flex group h-full'>
                             <div className="h-full w-full">
-                                <img src={unsplashImage.url && unsplashImage.url} className="object-cover h-full w-full" alt="preview" />
+                                <img src={unsplashImage.url && unsplashImage.url} className="object-cover h-full w-full" alt="preview" crossOrigin="anonymous" />
                             </div>
 
                             <div className="h-full bg-gray-800/60 absolute top-0 right-0 left-0 flex items-center px-10">

@@ -33,7 +33,7 @@ const StylishTheme = ({ config }) => {
                     <div className="w-1/2 h-full">
                         {unsplashImage ?
                             <div className='relative w-full h-full flex group'>
-                                <img src={unsplashImage.url && unsplashImage.url} className="object-cover w-full h-full rounded-r-xl" alt="preview" />
+                                <img src={unsplashImage.url && unsplashImage.url} className="object-cover w-full h-full rounded-r-xl" alt="preview" crossOrigin="anonymous" />
 
                                 <button
                                     onClick={() => setUnsplashImage('')}
